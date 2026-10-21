@@ -20,8 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -31,7 +29,7 @@ jobs:
       - name: Build for GitHub Pages
         run: pnpm build
         env:
-          GITHUB_PAGES: 'true'
+          GITHUB_PAGES: "true"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
