@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig } from 'vite'
 
-export default defineConfig({
+export default defineConfig(() => ({
+  base: process.env.GITHUB_PAGES === 'true' ? '/react-offline-notes/' : '/',
   plugins: [
     react(),
     tailwindcss(),
@@ -19,10 +20,10 @@ export default defineConfig({
         theme_color: '#18181b',
         background_color: '#18181b',
         display: 'standalone',
-        start_url: '/',
+        start_url: './',
         icons: [
           {
-            src: '/icons.svg',
+            src: 'icons.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
             purpose: 'any',
@@ -48,4 +49,4 @@ export default defineConfig({
     setupFiles: ['./src/shared/config/test-setup.ts'],
     globals: true,
   },
-})
+}))
