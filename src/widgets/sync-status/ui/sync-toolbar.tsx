@@ -15,21 +15,30 @@ export function SyncToolbar({ activeNoteId }: SyncToolbarProps) {
   const forceEnabled = activeNoteId !== null && forceConflictNoteId === activeNoteId
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex min-w-0 flex-wrap items-center gap-2">
       <UnsyncedBadge />
-      <Button disabled={isSyncing} onClick={() => syncNow()} size="sm">
+      <Button
+        className="min-h-11 touch-manipulation sm:min-h-8"
+        disabled={isSyncing}
+        onClick={() => syncNow()}
+        size="sm"
+      >
         {isSyncing ? 'Syncing…' : 'Sync now'}
       </Button>
-      <label className="flex items-center gap-2 text-xs text-[var(--text)]">
+      <label className="flex min-h-11 min-w-0 max-w-full cursor-pointer items-center gap-2 text-xs text-[var(--text)] touch-manipulation sm:min-h-0">
         <input
           checked={forceEnabled}
+          className="size-5 shrink-0 sm:size-4"
           disabled={!activeNoteId}
           onChange={(event) =>
             setForceConflictNoteId(event.target.checked ? activeNoteId : null)
           }
           type="checkbox"
         />
-        Force conflict for active note
+        <span className="min-w-0 leading-snug">
+          <span className="sm:hidden">Force conflict</span>
+          <span className="hidden sm:inline">Force conflict for active note</span>
+        </span>
       </label>
     </div>
   )

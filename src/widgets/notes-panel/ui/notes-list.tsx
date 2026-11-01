@@ -20,16 +20,16 @@ export function NotesList({ selectedId, onSelect }: NotesListProps) {
   }
 
   return (
-    <div className="flex h-full flex-col gap-2">
-      <Button onClick={handleCreate} size="sm">
+    <div className="flex h-full min-h-0 flex-col gap-2">
+      <Button className="min-h-11 w-full touch-manipulation sm:min-h-8 sm:w-auto" onClick={handleCreate} size="sm">
         New note
       </Button>
-      <ul className="flex-1 space-y-1 overflow-auto">
+      <ul className="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-y-contain">
         {(notes ?? []).map((note) => (
           <li key={note.id}>
             <button
               className={cn(
-                'w-full rounded-md px-2 py-2 text-left text-sm transition-colors',
+                'min-h-11 w-full touch-manipulation rounded-md px-3 py-2.5 text-left text-sm transition-colors sm:min-h-0 sm:px-2 sm:py-2',
                 selectedId === note.id
                   ? 'bg-[var(--accent-bg)] text-[var(--text-h)]'
                   : 'text-[var(--text)] hover:bg-[var(--accent-bg)]/60',
@@ -37,7 +37,7 @@ export function NotesList({ selectedId, onSelect }: NotesListProps) {
               onClick={() => onSelect(note.id)}
               type="button"
             >
-              <span className="block font-medium">{note.title || 'Untitled'}</span>
+              <span className="block truncate font-medium">{note.title || 'Untitled'}</span>
               {note.pendingSync ? (
                 <span className="text-xs text-amber-300">Pending sync</span>
               ) : null}
