@@ -25,6 +25,10 @@ Offline-first notes with Dexie, an outbox queue, mock sync, and a conflict dialo
 
 Offline-first notes with Dexie, an outbox queue, mock sync, and conflict resolution UI — Vite PWA.
 
+## Responsive layout
+
+Full adaptive layout for phone (~375px) and tablet (~768px): readable typography and spacing, no page-level horizontal scroll, and touch-friendly controls. The desktop visual language is preserved.
+
 ## Scripts
 
 ```bash
