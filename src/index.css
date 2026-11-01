@@ -21,6 +21,16 @@
   background: var(--background);
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
+  overflow-x: clip;
+}
+
+#root {
+  min-height: 100svh;
+  max-width: 100%;
 }
